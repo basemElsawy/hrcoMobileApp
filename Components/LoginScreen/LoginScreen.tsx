@@ -40,7 +40,7 @@ export default function LoginScreen() {
     employeeCode: "",
     password: "",
   });
-  const navigator = useNavigation();
+  const navigator: any = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
 
   const handleLogin = async () => {
@@ -53,7 +53,7 @@ export default function LoginScreen() {
       .then((res) => res.json())
       .then(async (res) => {
         setIsLoading(false);
-        console.log(res);
+        // console.log(res);
         if (res.isAuthenticated) {
           await AsyncStorage.setItem("token", res.token);
           await AsyncStorage.setItem("user", JSON.stringify(res.user));
@@ -64,7 +64,7 @@ export default function LoginScreen() {
         }
       })
       .finally(() => {})
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error, "here"));
   };
 
   // function setUserCredentialsHandler<T>(event: NativeSyntheticEvent<T>) {
@@ -75,15 +75,6 @@ export default function LoginScreen() {
 
   return (
     <>
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => setModalVisible(false)}
-      >
-        <View style={styles.modalOverlay}></View>
-      </Modal>
-
       <View style={styles.mainContainer}>
         <View style={styles.imageContainer}>
           <Image source={image} style={styles.image} />

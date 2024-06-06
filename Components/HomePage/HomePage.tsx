@@ -2,13 +2,9 @@ import React, { useEffect, useState, useRef } from "react";
 import {
   View,
   Text,
-  Image,
   TouchableOpacity,
   Pressable,
-  Button,
-  FlatList,
   Modal,
-  ImageBackground,
   StyleSheet,
   useWindowDimensions,
   TextInput,
@@ -59,9 +55,9 @@ export default function HomePage() {
     AsyncStorage.getItem("user").then((res) => {
       setUserData(JSON.parse(res || "{}"));
       setUserID(JSON.parse(res || "{}").id);
-      console.log(JSON.parse(res || "").employeeCode);
+      // console.log(JSON.parse(res || "").employeeCode);
     });
-    console.log(userID);
+    // console.log(userID);
 
     if (Requests) {
       setRequestData(Requests);
@@ -270,8 +266,8 @@ const styles = StyleSheet.create({
   headerContent: {
     // flex: 0.25,
 
-    borderBottomRightRadius: 45,
-    borderBottomLeftRadius: 45,
+    borderBottomRightRadius: 25,
+    borderBottomLeftRadius: 25,
     overflow: "hidden",
     shadowColor: "black",
     shadowOpacity: 0.3,
@@ -314,7 +310,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   modalContent: {
-    height: "fit-content",
+    height: "fit-content" as any,
     padding: 15,
     width: width * 0.8,
     backgroundColor: "white",

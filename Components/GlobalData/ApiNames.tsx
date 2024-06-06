@@ -12,4 +12,6 @@ export class ApiName {
   public static createRequests: string = "api/Request/createRequest";
   public static getEmplpoyeeComments: string =
     "api/Comments/getSpecificComment?searchQuery=";
+  public static getAllUsers: string =
+    "api/Authentication/getAllUsers?page=1&pageSize=100";
 }

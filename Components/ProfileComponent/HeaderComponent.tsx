@@ -19,7 +19,9 @@ const width = Dimensions.get("window");
 export default function HeaderComponent({ userData }: any) {
   const navigator: any = useNavigation();
   const { width } = useWindowDimensions();
+
   useEffect(() => {}, []);
+
   return (
     <ImageBackground
       style={styles.headerImage}
@@ -67,41 +69,50 @@ export default function HeaderComponent({ userData }: any) {
           >
             <MaterialCommunityIcons name={"menu"} color={"#0083db"} size={21} />
           </Pressable>
-          <Pressable
-            style={{
-              shadowColor: "black",
-              shadowOpacity: 1,
-              shadowOffset: { height: 2, width: 2 },
-              elevation: 5,
-              shadowRadius: 0,
-              borderRadius: 200,
-              backgroundColor: "white",
-              overflow: "hidden",
-            }}
-          >
-            <Image
-              style={{
-                ...styles.personImage,
-              }}
-              source={
-                userData.image
-                  ? { uri: userData.image }
-                  : require("../../assets/Unknown_person.jpg")
-              }
-            />
-          </Pressable>
+          <Pressable></Pressable>
         </View>
       </View>
       <View style={styles.headerText}>
-        <Text style={styles.welcomeText}>Welcome</Text>
-        <Text style={styles.nameText}>
-          {(userData.fullName as string)?.length
-            ? userData.fullName
-                .split(" ")
-                .map((name: string, idx: number) => (idx < 2 ? name : ""))
-                .join(" ")
-            : ""}
-        </Text>
+        <View
+          style={{
+            shadowColor: "black",
+            shadowOpacity: 1,
+            shadowOffset: { height: 2, width: 2 },
+            elevation: 5,
+            shadowRadius: 0,
+            borderRadius: 200,
+            height: 75,
+            width: 75,
+            overflow: "hidden",
+            backgroundColor: "white",
+          }}
+        >
+          <Image
+            style={{
+              ...styles.personImage,
+            }}
+            source={
+              userData.image
+                ? { uri: userData.image }
+                : require("../../assets/Unknown_person.jpg")
+            }
+          />
+        </View>
+        <View
+          style={{ justifyContent: "center", alignItems: "center", gap: 10 }}
+        >
+          <Text style={styles.nameText}>
+            {(userData.fullName as string)?.length
+              ? userData.fullName
+                  .split(" ")
+                  .map((name: string, idx: number) => (idx < 2 ? name : ""))
+                  .join(" ")
+              : ""}
+          </Text>
+          <Text style={{ fontWeight: "600", fontSize: 16, opacity: 0.4 }}>
+            Code {userData.employeeCode}
+          </Text>
+        </View>
       </View>
     </ImageBackground>
   );
@@ -116,8 +127,9 @@ const styles = StyleSheet.create({
   headerText: {
     width: width as any,
     paddingHorizontal: 12,
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 15,
   },
   headerContent: {
     // flex: 0.25,
@@ -135,6 +147,7 @@ const styles = StyleSheet.create({
   headerImage: {
     flex: 1,
     paddingTop: 38,
+    // height: 300,
     justifyContent: "space-between",
     paddingBottom: 25,
   },
@@ -162,9 +175,9 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   personImage: {
-    flex: 0.9,
-    height: 190,
-    width: 57,
+    // flex: 0.9,
+    height: 75,
+    width: 75,
     borderRadius: 300,
   },
   options: {
@@ -192,11 +205,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   nameText: {
-    paddingLeft: 30,
-    color: "grey",
-    fontSize: 18,
+    color: "#0083bd",
+    fontSize: 24,
     fontWeight: "500",
-    opacity: 0.7,
+    opacity: 1,
   },
   notificationCount: {
     // backgroundColor: "red",

@@ -38,6 +38,7 @@ export default function AuthProvider(props: any) {
       setUserToken(token);
     },
     signOut: () => {
+      AsyncStorage.clear();
       setUserToken(null);
     },
     token: userToken,

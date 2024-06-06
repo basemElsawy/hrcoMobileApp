@@ -1,4 +1,11 @@
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Pressable,
+  ActivityIndicator,
+} from "react-native";
 import React, { useEffect } from "react";
 
 import RequestList from "./RequestList";
@@ -20,7 +27,7 @@ export default function RequestsList(props: any) {
   }
   return (
     <>
-      <View>
+      <View style={{ justifyContent: "space-between", flexDirection: "row" }}>
         <Text
           style={{
             color: "#0083DB",
@@ -33,17 +40,33 @@ export default function RequestsList(props: any) {
         >
           Requests
         </Text>
+        <Pressable>
+          <Text
+            style={{
+              color: "#0083DB",
+              fontWeight: "bold",
+              marginBottom: 10,
+              fontSize: 12,
+            }}
+          >
+            Track Requests
+          </Text>
+        </Pressable>
       </View>
       <View style={{ borderRadius: 10, overflow: "hidden" }}>
-        <FlatList
-          data={props.requests}
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          renderItem={(item: any) => (
-            <RequestList data={item} image={icons} handler={requestHandler} />
-          )}
-          keyExtractor={(item) => item.id.toString()}
-        />
+        {props.requests ? (
+          <FlatList
+            data={props.requests}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            renderItem={(item: any) => (
+              <RequestList data={item} image={icons} handler={requestHandler} />
+            )}
+            keyExtractor={(item) => item.id.toString()}
+          />
+        ) : (
+          <ActivityIndicator size={"small"} color={"#0083db"} />
+        )}
       </View>
     </>
   );

@@ -8,6 +8,7 @@ import SplashScreen from "./Components/Splash/splashScreen";
 import HomePage from "./Components/HomePage/HomePage";
 import LoginScreen from "./Components/LoginScreen/LoginScreen";
 import AuthProvider from "./Components/Contexts/AuthContext";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   AuthContextModel,
   AuthContext,
@@ -19,6 +20,7 @@ export default function App() {
   const Stack: any = createStackNavigator();
   useEffect(() => {
     // signIn();
+
     // Simulate app loading for 2 seconds (replace with actual logic)
     setTimeout(() => {
       setIsLoading(false);
