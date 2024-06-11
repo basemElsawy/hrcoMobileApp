@@ -79,10 +79,11 @@ export default function HomePage() {
       requestTypeID: selectedValue,
       requestTypeDescription: description,
     };
-
+    console.log("clicked");
     setRequestLoader(true);
+    console.log(requestBody);
 
-    if (requestBody.requestTypeDescription.length >= 15) {
+    if (requestBody.requestTypeDescription.length >= 10) {
       fetch(environment.baseUrl + ApiName.createRequests, {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -91,12 +92,16 @@ export default function HomePage() {
         .then((res) => res.json())
         .then((res) => {
           setRequestLoader(false);
+          console.log(res);
           if (res["employeeRequest"]) {
             alert(res?.message);
             setModalVisible(false);
+
+            console.log("not yet finished");
           }
         })
         .catch((err) => {
+          alert(err);
           console.log(err);
         });
     } else {
@@ -104,6 +109,7 @@ export default function HomePage() {
       setRequestLoader(false);
     }
   }
+
   return (
     <>
       <Modal
@@ -197,6 +203,7 @@ export default function HomePage() {
                 />
               </View>
               <TouchableOpacity
+                disabled={requestLoading}
                 activeOpacity={0.8}
                 style={{
                   marginTop: 10,

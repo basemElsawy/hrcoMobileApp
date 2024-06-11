@@ -14,4 +14,16 @@ export class ApiName {
     "api/Comments/getSpecificComment?searchQuery=";
   public static getAllUsers: string =
     "api/Authentication/getAllUsers?page=1&pageSize=100";
+  public static updateUser: string = "api/Authentication/UpdateUser?userID=";
+  public static getSpecificuser: string =
+    "api/Authentication/getSpecificUser?EmpCode=";
+  public static userRequests: string = "api/Request/getAllSubmittedRequests?";
+  public static specificUserRequests: string =
+    "api/Request/getNoActionForASpecificUser?";
+  public static getSubmittedRequests: string =
+    "api/Request/getSubmittedForSpecificUser?";
+  public static getIgnoredRequests: string =
+    "api/Request/getIgnoredForASpecificUser?";
+  public static getSpecificProgress: string =
+    "api/Progress/getSpecificEmpProgress?userID=";
 }

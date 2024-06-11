@@ -16,7 +16,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 const width = Dimensions.get("window");
-export default function HeaderComponent({ userData }: any) {
+export default function HeaderComponent({ userData, navigation }: any) {
   const navigator: any = useNavigation();
   const { width } = useWindowDimensions();
 
@@ -29,16 +29,17 @@ export default function HeaderComponent({ userData }: any) {
     >
       <View style={{ ...styles.headerOptions, width }}>
         <View style={styles.searchContainer}>
-          <Pressable style={{ justifyContent: "center", alignItems: "center" }}>
-            <Image
-              style={{ height: 15, width: 15 }}
-              source={require("../../assets/Search.png")}
+          <Pressable
+            onPress={() => {
+              navigator.navigate("Profile", { screen: "ProfileMain" });
+            }}
+          >
+            <MaterialCommunityIcons
+              name="arrow-left"
+              size={21}
+              color={"#0038bd"}
             />
           </Pressable>
-          <TextInput
-            style={{ fontSize: 12 }}
-            placeholder="Search For Anything"
-          />
         </View>
         <View style={styles.options}>
           <TouchableOpacity activeOpacity={0.8} style={styles.option}>
@@ -101,7 +102,7 @@ export default function HeaderComponent({ userData }: any) {
         <View
           style={{ justifyContent: "center", alignItems: "center", gap: 10 }}
         >
-          <Text style={styles.nameText}>
+          <Text style={[styles.nameText, { textTransform: "capitalize" }]}>
             {(userData.fullName as string)?.length
               ? userData.fullName
                   .split(" ")
@@ -171,7 +172,7 @@ const styles = StyleSheet.create({
 
     borderRadius: 100,
     paddingHorizontal: 10,
-    paddingVertical: 4,
+    paddingVertical: 10,
     backgroundColor: "white",
   },
   personImage: {

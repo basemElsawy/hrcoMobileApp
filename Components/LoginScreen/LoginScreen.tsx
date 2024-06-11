@@ -53,7 +53,7 @@ export default function LoginScreen() {
       .then((res) => res.json())
       .then(async (res) => {
         setIsLoading(false);
-        // console.log(res);
+
         if (res.isAuthenticated) {
           await AsyncStorage.setItem("token", res.token);
           await AsyncStorage.setItem("user", JSON.stringify(res.user));

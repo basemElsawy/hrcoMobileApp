@@ -21,9 +21,10 @@ import Settings from "./Components/Settings/Settings";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import EditProfile from "./Components/ProfileComponent/EditProfile";
 import MyRequests from "./Components/ProfileComponent/MyRequests";
+import Progress from "./Components/ProfileComponent/progress";
 
 const Drawer = createDrawerNavigator();
-const Tab = createMaterialBottomTabNavigator();
+const Tab: any = createMaterialBottomTabNavigator();
 const ProfileStack = createStackNavigator();
 
 let userFullName: string = "";
@@ -105,6 +106,7 @@ function BottomTabs() {
 const CustomDrawerContent = (props: any) => {
   const navigator: any = useNavigation();
   const { signOut }: any = useContext(AuthContext);
+
   return (
     <DrawerContentScrollView {...props}>
       <View style={styles.drawerContent}>
@@ -204,7 +206,7 @@ const CustomDrawerContent = (props: any) => {
           labelStyle={{ color: "#0083db" }}
           label="Logout"
           onPress={() => {
-            props.navigation.navigate("loginScreen");
+            // props.navigation.navigate("loginScreen");
             signOut();
           }}
         />
@@ -229,6 +231,11 @@ function ProfileStackNavigator() {
       <ProfileStack.Screen
         name="MyRequests"
         component={MyRequests}
+        options={{ headerShown: false }}
+      />
+      <ProfileStack.Screen
+        name="Progress"
+        component={Progress}
         options={{ headerShown: false }}
       />
     </ProfileStack.Navigator>

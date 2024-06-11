@@ -10,14 +10,12 @@ export default function Profile() {
   const [userID, setUserID] = useState();
   const navigator: any = useNavigation();
   useEffect(() => {
-    console.log("working");
     AsyncStorage.getItem("user").then((res) => {
       setUserData(JSON.parse(res || "{}"));
       setUserID(JSON.parse(res || "{}").id);
       // console.log(userData);
       // console.log(JSON.parse(res || "").employeeCode);
     });
-    console.log(userData?.email);
   }, []);
 
   return (
@@ -67,6 +65,31 @@ export default function Profile() {
                 style={{ transform: [{ rotate: "-45deg" }] }}
               />
               <Text style={{ color: "#0083db" }}>My Requests</Text>
+            </View>
+            <View>
+              <MaterialCommunityIcons
+                name={"arrow-right-thick"}
+                color={"#0083db"}
+                size={21}
+              />
+            </View>
+          </Pressable>
+        </View>
+        <View>
+          <Pressable
+            style={styles.profileButtons}
+            onPress={() => {
+              navigator.navigate("Profile", { screen: "Progress" });
+            }}
+          >
+            <View style={styles.buttonDetails}>
+              <MaterialCommunityIcons
+                name={"chart-bar"}
+                color={"#0083db"}
+                size={18}
+                // style={{ transform: [{ rotate: "-45deg" }] }}
+              />
+              <Text style={{ color: "#0083db" }}>My Progress</Text>
             </View>
             <View>
               <MaterialCommunityIcons

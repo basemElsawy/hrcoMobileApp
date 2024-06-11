@@ -19,9 +19,7 @@ let icons = [
   { icon: require("../../assets/Overtime.png") },
 ];
 export default function RequestsList(props: any) {
-  useEffect(() => {
-    console.log(props.requests);
-  }, []);
+  useEffect(() => {}, []);
   function requestHandler(requestTypeId: number) {
     props.handler(requestTypeId);
   }

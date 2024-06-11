@@ -94,7 +94,7 @@ export default function HeaderComponent({ userData }: any) {
       </View>
       <View style={styles.headerText}>
         <Text style={styles.welcomeText}>Welcome</Text>
-        <Text style={styles.nameText}>
+        <Text style={[styles.nameText, { textTransform: "capitalize" }]}>
           {(userData.fullName as string)?.length
             ? userData.fullName
                 .split(" ")
